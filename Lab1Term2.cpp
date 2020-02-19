@@ -1,8 +1,8 @@
-//Вычисление даты рождения по Идентификационному коду
+//Р’С‹С‡РёСЃР»РµРЅРёРµ РґР°С‚С‹ СЂРѕР¶РґРµРЅРёСЏ РїРѕ РРґРµРЅС‚РёС„РёРєР°С†РёРѕРЅРЅРѕРјСѓ РєРѕРґСѓ
 #include "stdafx.h"
-#include <conio.h> // нужна для _getch()
-#include <iostream> // поток ввод-вывода
-#include <string> // для работы со строками
+#include <conio.h> // РЅСѓР¶РЅР° РґР»СЏ _getch()
+#include <iostream> // РїРѕС‚РѕРє РІРІРѕРґ-РІС‹РІРѕРґР°
+#include <string> // РґР»СЏ СЂР°Р±РѕС‚С‹ СЃРѕ СЃС‚СЂРѕРєР°РјРё
 #include <cmath>
 using namespace std;
 
@@ -34,7 +34,7 @@ char *Rus(char *Text)
 void Warn(int flag)
 {
 	system("CLS");
-	string StringWarn[] = { Rus("Сначала введите код."), Rus("Сначала проведите расчёты.") };
+	string StringWarn[] = { Rus("РЎРЅР°С‡Р°Р»Р° РІРІРµРґРёС‚Рµ РєРѕРґ."), Rus("РЎРЅР°С‡Р°Р»Р° РїСЂРѕРІРµРґРёС‚Рµ СЂР°СЃС‡С‘С‚С‹.") };
 	cout << StringWarn[flag];
 	_getch();
 	system("CLS");
@@ -42,7 +42,7 @@ void Warn(int flag)
 
 void OutputDate(int dateY, int dateM, int dateD)
 {
-		cout << Rus("\nДата рождения: ");
+		cout << Rus("\nР”Р°С‚Р° СЂРѕР¶РґРµРЅРёСЏ: ");
 		if (dateD < 10)
 			cout << "0" << dateD << ".";
 		else
@@ -73,7 +73,7 @@ int MonthCalc(int daysleft, int &dateY, int &dateM, int &dateD, bool leapyear)
 	}
 	dateM = i;
 	dateD = daysleft;
-	cout << Rus("Производятся расчёты") << endl;
+	cout << Rus("РџСЂРѕРёР·РІРѕРґСЏС‚СЃСЏ СЂР°СЃС‡С‘С‚С‹") << endl;
 	unsigned char symb = 219;
 	Sleep(1000);
 	for (int i = 0; i < 10; i++)
@@ -82,7 +82,7 @@ int MonthCalc(int daysleft, int &dateY, int &dateM, int &dateD, bool leapyear)
 		Sleep(100);
 	}
 	Sleep(500);
-	cout << Rus("\nРасчёты окончены.");
+	cout << Rus("\nР Р°СЃС‡С‘С‚С‹ РѕРєРѕРЅС‡РµРЅС‹.");
 	OutputDate(dateY, dateM, dateD);
 	return 1;
 
@@ -110,17 +110,17 @@ void InputNum(long long int &idcode, int &dateY, int &dateM, int &dateD)
 	flag = 0;
 	while (flag == 0)
 	{
-		cout << Rus("Введите идентификационный код из десяти цифр: ");
+		cout << Rus("Р’РІРµРґРёС‚Рµ РёРґРµРЅС‚РёС„РёРєР°С†РёРѕРЅРЅС‹Р№ РєРѕРґ РёР· РґРµСЃСЏС‚Рё С†РёС„СЂ: ");
 		cin >> idcode;
 		if (!cin)
 		{
-			cout << Rus("ERROR! Введено некоректные данные!") << endl;
+			cout << Rus("ERROR! Р’РІРµРґРµРЅРѕ РЅРµРєРѕСЂРµРєС‚РЅС‹Рµ РґР°РЅРЅС‹Рµ!") << endl;
 			_getch();
 			exit(0);
 		}
 		if ((idcode < icmin) || (idcode > icmax))
 		{
-			cout << Rus("Введённое чилсо некорректно, повторите ввод.");
+			cout << Rus("Р’РІРµРґС‘РЅРЅРѕРµ С‡РёР»СЃРѕ РЅРµРєРѕСЂСЂРµРєС‚РЅРѕ, РїРѕРІС‚РѕСЂРёС‚Рµ РІРІРѕРґ.");
 			_getch();
 			idcode = 0;
 			system("CLS");
@@ -158,8 +158,8 @@ void main()
 	
 	ConsoleCursorVisible(false, 100);
 	
-	string Menu[] = { Rus("Задание 1"), Rus("Задание 2"), Rus("1. Ввод фактического числа элементов массива"), Rus("2. Ручной ввод элементов массива"), 
-					  Rus("3. Генерация элементов массива"), Rus("4. Обработка массива"), Rus("5. Вывод результующего массива") };
+	string Menu[] = { Rus("Р—Р°РґР°РЅРёРµ 1"), Rus("Р—Р°РґР°РЅРёРµ 2"), Rus("1. Р’РІРѕРґ С„Р°РєС‚РёС‡РµСЃРєРѕРіРѕ С‡РёСЃР»Р° СЌР»РµРјРµРЅС‚РѕРІ РјР°СЃСЃРёРІР°"), Rus("2. Р СѓС‡РЅРѕР№ РІРІРѕРґ СЌР»РµРјРµРЅС‚РѕРІ РјР°СЃСЃРёРІР°"), 
+					  Rus("3. Р“РµРЅРµСЂР°С†РёСЏ СЌР»РµРјРµРЅС‚РѕРІ РјР°СЃСЃРёРІР°"), Rus("4. РћР±СЂР°Р±РѕС‚РєР° РјР°СЃСЃРёРІР°"), Rus("5. Р’С‹РІРѕРґ СЂРµР·СѓР»СЊС‚СѓСЋС‰РµРіРѕ РјР°СЃСЃРёРІР°") };
 	char ch;
 	const char ESCAPE = 27;
 	const char ENTER = 13;
