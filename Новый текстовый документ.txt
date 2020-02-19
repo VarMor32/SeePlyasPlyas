@@ -1,0 +1,131 @@
+Андрей Николаевич Быков
+
+
+#include "stdafx.h"
+#include <conio.h> // нужна для _getch()
+#include <iostream> // поток ввод-вывода
+#include <string> // для работы со строками
+
+using namespace std;
+
+HANDLE hStdOut = GetStdHandle(STD_OUTPUT_HANDLE);
+
+int flag = 0;
+
+void GoToXY(short x, short y)
+{
+	SetConsoleCursorPosition(hStdOut, { x, y });
+}
+
+void ConsoleCursorVisible(bool show, short size)
+{
+	CONSOLE_CURSOR_INFO structCursorInfo;
+	GetConsoleCursorInfo(hStdOut, &structCursorInfo);
+	structCursorInfo.bVisible = show;
+	structCursorInfo.dwSize = size;
+	SetConsoleCursorInfo(hStdOut, &structCursorInfo);
+}
+
+char Buf[256];
+char *Rus(char *Text)
+{
+	CharToOemA(Text, Buf);
+	return Buf;
+}
+
+void Warn(int flag)
+{
+	system("CLS");
+	string StringWarn[] = { "Сначала сгенерируйте первый массив!", "Сначала вручную сформируйте второй массив!", "Сначала обработайте данные!" };
+	cout << StringWarn[flag];
+	_getch();
+	system("CLS");
+}
+
+void GenArray()
+{
+
+}
+
+void InputArray()
+{
+
+}
+
+void ProcessArray()
+{
+	
+}
+
+void OutputArray()
+{
+	
+}
+
+void MenuActive(int active_menu, string  Menu[])
+{
+	switch (active_menu)
+	{
+	case 0:
+		system("CLS");
+		break;
+	case 1:
+		system("CLS");
+		break;
+	case 2:
+		system("CLS");
+		break;
+	case 3:
+		system("CLS");
+		break;
+	case 4: exit(0);
+	}
+}
+
+void main()
+{
+	
+	ConsoleCursorVisible(false, 100);
+	
+	string Menu[] = { "" };
+	char ch;
+	const char ESCAPE = 27;
+	const char ENTER = 13;
+	const char UP = 72;
+	const char DOWN = 80;
+	int active_menu = 0;
+
+	while (true)
+	{
+		int x = 40, y = 12;
+		for (int i = 0; i < size(Menu); i++)
+		{
+			if (i == active_menu)
+				
+				SetConsoleTextAttribute(hStdOut, FOREGROUND_GREEN | FOREGROUND_INTENSITY);
+			
+			else
+				SetConsoleTextAttribute(hStdOut, FOREGROUND_BLUE | FOREGROUND_INTENSITY);
+			GoToXY(x, y++);
+			cout << Menu[i] << endl;
+		}
+		ch = _getch();
+		switch (ch)
+		{
+		case ENTER:
+			MenuActive(active_menu, Menu);
+			break;
+		case ESCAPE:
+			exit(0);
+		case UP:
+			active_menu--;
+			if (active_menu < 0) active_menu = 4;
+			break;
+		case DOWN:
+			active_menu++;
+			if (active_menu > 4) active_menu = 0;
+			break;
+		}
+	}
+	_getch();
+}
